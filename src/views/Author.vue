@@ -13,9 +13,9 @@
 .card {
   text-align: center;
   width: 450px;
-  height: 550px;
+  height: 500px;
 }
 .author {
-  height: 400px;
+  height: 450px;
 }
 </style>

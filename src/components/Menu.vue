@@ -10,6 +10,7 @@
       text-color="#fff"
       active-text-color="#ffd04b"
     >
+      <el-menu-item index="/">HomePage</el-menu-item>
       <el-menu-item index="/ActorList">Demo:ActorList</el-menu-item>
       <el-submenu index="/ActorSearch">
         <template slot="title">Demo:ActorSearch</template>
@@ -21,9 +22,6 @@
         <el-menu-item index="/ActorSearch/6">Actor 6</el-menu-item>
       </el-submenu>
       <el-menu-item index="/Echarts">Demo:Echarts</el-menu-item>
-      <el-menu-item index="4"
-        ><a href="https://www.baidu.com" target="_blank">Baidu</a></el-menu-item
-      >
       <el-menu-item index="/Author">Author</el-menu-item>
     </el-menu>
   </div>
