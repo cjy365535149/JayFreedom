@@ -3,7 +3,6 @@
     <el-card class="card" align="center">
       <img class="author" src="../../static/WX-JAY.jpg" />
       <div>
-        
       </div>
     </el-card>
   </div>

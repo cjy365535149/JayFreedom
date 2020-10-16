@@ -2,6 +2,8 @@
 import axios from 'axios'
 import { MessageBox, Message } from 'element-ui'
 import store from '@/store'
+import router from '@/router'
+
 //import { getToken } from '@/utils/auth'
 
 // create an axios instance
@@ -16,7 +18,6 @@ const service = axios.create({
 service.interceptors.request.use(
   config => {
     // do something before request is sent
-
     if (store.getters.token) {
       // let each request carry token
       // ['X-Token'] is a custom headers key
@@ -35,6 +36,7 @@ service.interceptors.request.use(
 
 // response interceptor
 service.interceptors.response.use(
+  
   /**
    * If you want to get http information such as headers or status
    * Please return  response => response
@@ -47,6 +49,7 @@ service.interceptors.response.use(
    */
   response => {
     const res = response.data
+    
     /*
     //jay 没有code 不要判断了
     // if the custom code is not 20000, it is judged as an error.
@@ -79,12 +82,19 @@ service.interceptors.response.use(
     return res
   },
   error => {
-    console.log('err' + error) // for debug
+    var err = error.response.data
+    console.log('error:')
+    console.log(err) 
     Message({
-      message: error.message,
+      message: err.message,
       type: 'error',
       duration: 5 * 1000
     })
+    if (err.code === 401){
+      //Cookies.remove(TOKEN_KEY)
+      console.log("认证失败，跳转登录页");
+      router.push({ name: "Logon", params: {  } });
+    }
     return Promise.reject(error)
   }
 )
